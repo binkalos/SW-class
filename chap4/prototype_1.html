@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>2112</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+       <script>
+           function point(x,y){//객체 생성자 함수=>클래스 역활을 함
+                this.x = x;
+                this.y = y;
+                point.prototype.getDistance = function(){//원점에서의 거리 구하기
+                    //return Math.sqrt(this.x*this.x + this.y*this.y);
+                    var result = '';
+                    result += "원점에서 점(" + x + ',' + y + ')까지의 거리 : '+
+                            Math.sqrt(this.x*this.x + this.y*this.y);//두 점 사이 거리 구하는 공식
+                    alert(result);
+                }
+           }
+           var p1 = new point(10,20);//인스턴스 객체 역활
+           p1.getDistance();//프로토타입 메서드를 호출
+           var p2 = new point(10,30);
+           p2.getDistance();
+           //소스들을 반복하다 보니 성능 저하가 올 수 있음
+           </script>
+    </body>
+</html>

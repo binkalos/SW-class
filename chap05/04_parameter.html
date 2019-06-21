@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <script>
+            // 변수의 갯수를 검사하지 않는다.
+            function max() {
+                var init_max = arguments[0];
+
+                for(var i=0; i<arguments.length; i++){
+                    if(arguments[i]>init_max){
+                        init_max = arguments[i];
+                    }
+                }
+                return init_max;
+            }
+            alert(max(1,2,3));
+            alert(max(1,2,3,4,5));
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

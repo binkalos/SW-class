@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        backcolor = new Array("red","yello","blue","green");
+        
+        var i = 0;
+        setInterval(function(){
+            document.bgColor = backcolor[i]++;
+            if(i==backcolor.length){
+                i = 0;
+            }
+        },1000);
+       
+    </script>
+</head>
+<body>
+    <h1>변수scope change를 이해합니다.</h1>
+ 
+</body>
+</html>

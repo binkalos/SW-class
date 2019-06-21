@@ -1,0 +1,14 @@
+<html>
+    <head>
+        <script>
+            a();
+            var a = function() {
+                // 전역변수 => 메모리 할당
+                alert("function a");
+            }
+            var a = function() {
+                alert("function b");
+            }
+        </script>
+    </head>
+</html>

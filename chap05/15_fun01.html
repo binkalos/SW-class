@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script>
+            a(); // function b
+            // 이미 전역객체를 읽어들인 상태
+            function a() {
+                alert("function a");
+            }
+            function a() {
+                alert("function b");
+            }
+            a(); // function b
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

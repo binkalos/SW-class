@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+   <Link rel="stylesheet" href="styles.css">
+    <script>
+        window.onload = init;
+        function init(){
+            document.getElementById("myform").onsubmit = calculate;
+        }
+        function calculate(){
+            //세과목의 점수 입력
+            //평균 구하기
+            //if,,else if,,,else=>ABCD성취도 계산 출력
+            // return false;
+             var kor = document.getElementById("kor").value;
+             var  eng = document.getElementById("eng").value;
+             var  mat = document.getElementById("mat").value;
+
+             var avg= (k+e+m)/3;
+            alert(avg);
+            if(avg>=90){
+                document.getElementById("ach").value = "A";
+            }
+            else if(avg>=80){
+                document.getElementById("ach").value = "B";
+            }
+            else if(avg>=70){
+                document.getElementById("ach").value = "C";
+            }
+            else if(avg>=60){
+                document.getElementById("ach").value = "D";
+            }
+            else{
+                document.getElementById("ach").value = "E";
+            }
+            return false;
+        }//function
+        </script>
+</head>
+<body>
+    <form action="" id=myForm>
+    <fieldset>
+        <legend>성취도계산기</legend>
+        <div><label>korean</label><input type="text" id="kor" required></div>
+        <div><label>english</label><input type="text" id="eng" required></div>
+        <div><label>math</label><input type="text" id="mat" required></div>
+        <div><label>Achievement</label><input type="text" id="ach" ></div>
+        <div><input type="submit" value="Achievement" id="submit"></div>
+
+    </fieldset>
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    <style>
+     body{
+            background-color : rgb(233, 202, 207);
+            width : 80%; 
+            margin: auto;
+            }
+    input{
+        width: 170px;
+        padding:5px;
+        margin-top: 10px;   
+    }
+    lable{
+        width: 80px;
+        color:black;
+    }
+    fieldset{
+        width: 270px;
+        color:black;
+        margin-top: 20px;
+    }
+     </style>
+      <script>
+       window.onload = init;
+       var result;
+       function init(){
+         num1 =   document.getElementById("num1");//num1이라는 아이디를 가진 친구를 데려왔다고 생각하자
+         num2 =   document.getElementById("num2");//num2라는 아이디를 가진 친구를 데려옴
+         result=   document.getElementById("result");// reult라는 아이디를 가진 친구 초청
+         button1 =   document.getElementById("button");//button1이라는 아이디를 가진 친구를 데려옴
+         button1.onclick = calc;//버튼1이 클릭이라는 이벤트 발생했을때 clac라는 함수 호출
+       }
+        
+        function calc() {//함수 clac
+          result.value=parseInt(num1.value)+parseInt(num2.value);//result의 값에 int로 형변환한 num1,num2를 더해준것을 result에 대입
+       }
+        </script>
+     </head>
+
+     <body>
+         <h1>덧셈 계산기</h1><!---덧셈 계산기라고 출력-->
+     <form action="" method="post" id = "MyForm"><!---폼을 여는 것-->
+         <fieldset>
+                <label>첫번째 상수</label> <input type = "text" id = "num1"><br /><!---첫번째 상수 : 키보드 입력값을 받는곳 input이 하얀네모박스를 말함-->
+                <label>두번째 상수</label> <input type = "text" id = "num2"><br />
+                <label>합계</label> <br /><input type = "text" id = "result">
+                <input type = "button" value="계산" id="button"><!---계산이라는 버튼-->
+        </fieldset>
+     </form>
+     
+    <form>
+    
+    </form>
+    
+
+    
+    
+            
+           
+           
+     </body>
+</html>

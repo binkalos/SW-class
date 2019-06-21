@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <script>
+            
+            function pythagoras(width, height){
+                function square(x){
+                    return x*x;// 덮어쓰기 안됨
+                }
+                return Math.sqrt(square(width) + square(height));
+            }
+            function square(w, he, hy){ // 재정의
+                if(w*w + he*he == hy*hy)
+                    return true;
+                else return false;
+            }
+            alert(pythagoras(20, 30));
+        </script>
+    </head>
+</html>

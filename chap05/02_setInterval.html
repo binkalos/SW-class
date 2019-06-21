@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Bom_setTimeOut</title>
+        <script>
+            window.onload = init;
+            var running;
+            function init(){
+                running = setInterval(exec, 500);
+                var btn = document.getElementById("btn");
+                btn.onclick = stopExec;
+            }
+            function exec(){
+                var target = document.getElementById("target");
+                target.style.color = (target.style.color=="red")?"blue":"red";
+            }
+            function stopExec(){
+                clearInterval(running);
+            }
+        </script>
+    </head>
+    <body>
+        <div id="target">
+            <p>이 글자들이 깜빡입니다.</p>
+        </div>
+        
+        <button id="btn">중지</button>
+    </body>
+</html>

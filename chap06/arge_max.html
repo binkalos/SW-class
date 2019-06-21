@@ -1,0 +1,48 @@
+<!doctype html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <script>
+            //변수의 개수를 감시하지 않는다. 변수 개수가 몇개 인지 신경안씀.
+            //매개변수의 개수 체크를 안함. 오류 메세지 않나와~~
+            function max(){
+                var init_max = arguments[0];
+                
+                for(i=0; i < arguments.length; i++){
+                    if(arguments[i]>init_max){
+                        init_max=arguments[i];//최대값 구하기
+                    }
+                }
+                return init_max;
+            }
+            alert(max(1,2,3));
+            alert(max(5,23,5.1,9,8));
+        </script>
+    
+    </body>
+</html>
+<!--<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <script>
+            //변수의 개수를 검사하지 않는다.
+            function max() { //->오류 안남 ><
+                var init_max = arguments[0];
+
+                for(i=0;i<arguments.length;i++) {
+                    if(arguments[i]>init_max) {
+                        init_max = arguments[i];
+                    }
+                }
+
+                return init_max;
+            }
+
+            alert(max(1,2,3));
+            alert(max(5,23,5.1,9,8))
+        </script>
+    </head>
+</html>-->

@@ -1,0 +1,34 @@
+<DOCTYPE html>
+    <html>
+    <head>
+        <title></title>
+            <script>
+                   /* for(i=1; i<=6; i++){
+                        document.write("<h" + i + ">"  + "헤드라인 태그 입니다." + "</h " + i + ">");
+                    }*/
+                var product = {
+                    제품명 : '건조망고',
+                    유형 : '당절임',
+                    성분 : '설탕, 망고'   
+                };
+                alert(product.제품명);
+                alert(product.유형);
+                alert(product.성분);
+
+                var output = "";
+                for(var key in product){
+                    output += "*" + key + ":" + product[key] + "\n";
+                }
+                alert(output);
+                var person = {
+                    name : "나미림",
+                    eat : function(food){alert(this.name + "이" + food + "를 먹는다.");
+                    }
+                };
+                person.eat("pizza");
+            </script>
+    </head>
+    <body>
+        
+    </body>
+    </html>

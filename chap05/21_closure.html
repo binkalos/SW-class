@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <script>
+            function test(name){
+                var output = 'Hello '+name;
+                // return output;
+                return function() {
+                    alert(output);
+                }
+            }
+            var test_1=test('Web');
+            var test_2=test('JavaScript');
+            alert(test_1);
+            alert(test_2);
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

@@ -1,0 +1,19 @@
+<!doctype html>
+  <html>
+    <head>
+      <meta charset="utf-8">
+      <title>2112_이규빈</title>
+      <link rel="stylesheet" href="styles.css">
+    </head>
+   <body>
+     
+    <form id="myForm" >
+          아이디<!--<input type="text" id="id" required>-->
+          <input type="text" id="id_input" placeholder="소문자+숫자 조합 6자 이상, 소문자로 시작"
+          pattern="[a-z0-9]{6}[a-z0-9]*"required><!--정규식표현 : http://developer88.tistory.com/89-->
+          <input type="submit" value="확인" id="submit">
+      
+    <script src = "obj_string.js"></script>
+</form>
+    </body>
+  </html>

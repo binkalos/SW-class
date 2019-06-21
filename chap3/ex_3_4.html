@@ -1,0 +1,49 @@
+<!doctype html>
+  <html>
+    <head>
+      <meta charset="utf-8">
+      <title></title>
+      <link rel="stylesheet" href="styles.css">
+      <script>
+        window.onload = init;
+        function init(){
+          document.getElementById("myForm").onsubmit = cal;
+        }
+        function cal(){
+          kor = document.getElementById("kor").value;
+          eng = document.getElementById("eng").value;
+          math = document.getElementById("math").value;
+          accom=document.getElementById("accom");
+          var re = (Number(kor)+Number(eng)+Number(math)) / 3;
+
+           if(re>=90){
+             document.getElementById("accom").value = "A";
+           }else if(re>=80){
+             document.getElementById("accom").value = "B";
+           }else if(re>=70){
+             document.getElementById("accom").value = "C";
+           }else if(re>=60){
+             document.getElementById("accom").value = "D";
+           }else{
+             document.getElementById("accom").value = "E";
+           }
+           return false;
+
+         
+          return false;
+        }
+      </script>
+    </head>
+    <body>
+      <form action="" id="myForm">
+        <fieldset>
+          <legend>성취도 계산기</legend>
+          <div><label>국어</label><input type="text" id="kor" required></div>
+          <div><label>영어</label><input type="text" id="eng" required></div>
+          <div><label>수학</label><input type="text" id="math" required></div>
+          <div><label>성취도</label><input type="text" id="accom"></div>
+          <div><input type="submit" value="환산" id="submit"</div>
+        </fieldset>
+      </form>
+    </body>
+  </html>

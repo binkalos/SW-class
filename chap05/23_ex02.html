@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <script>
+            backColor = new Array("red", "yellow", "blue", "green");
+            var stop = document.getElementById("stop");
+            var i=0;
+            id = setInterval(function () {
+                document.bgColor = backColor[i++];
+                if(i==backColor.length)
+                    i=0;
+            }, 1000);
+
+            stop.onclick = function() {
+                clearInterval(id);
+            }
+        </script>
+    </head>
+    <body>
+        <h1>변수 scope chain을 이해합니다.</h1>
+        <button id="stop">stop</button>
+    </body>
+</html>

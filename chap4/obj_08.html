@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+</head>
+<body>
+   <script>
+      var student = {
+            이름 : '나미림',
+            국어 : 90,
+            영어 : 80,
+            수학 : 100,
+            output : '객체내'//객체내 속성 변수 (16번 라인과 충돌 같은 이름을 써서)
+      };
+      var output='';
+      with(student){//속성 앞에 student가 생략되어있다고 생각
+      window.output +='이름 : '+이름 + '\n';//전역변수 앞에는 windiw.이 붙어야함
+      window.output +='국어 : '+국어 + '\n';
+      window.output +='영어 : '+영어 + '\n';
+      window.output +='수학 : '+수학 + '\n';
+      window.output +='총점 : '+(국어 + 영어 + 수학 )+ '\n';
+      
+      }
+      alert(output);
+       
+        </script>
+    </body>
+</html>

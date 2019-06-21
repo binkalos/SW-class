@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>25_ex04</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <form action="" id="myForm">
+            <fieldset>
+                <legend>Sorting Word</legend>
+                <p>아래 칸에 sorting을 원하는 단어를 입력하세요.
+                    단어 사이에는 공백처리를 해야 하며 문장으로 입력해도 무관합니다.
+                    이력이 끝나면 버튼을 누르세요.</p>
+                <hr />
+                <div>
+                    <label for="words">단어 및 문장</label>
+                    <input type="text" id="words" required>
+                </div>
+                <input type="submit" value="Sort!" id="submit">
+                <h2>정렬 결과</h2>
+                <div id="output"></div>
+            </fieldset>
+        </form>
+        <script src="25_ex04.js"></script>
+    </body>
+</html>

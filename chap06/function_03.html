@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        a();//에러 a is not a function=>전역변수라서 메모리 할당만 시켜놓음 그래서 실행객체 만들지 않음
+    var a = function (){
+        alert("함수 a");
+    }
+    var a = function(){
+        alert("함수 b");
+    }
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

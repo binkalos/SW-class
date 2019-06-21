@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Page Title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+        <script>
+            function functionTest() {
+                var a = "a는 지역변수";
+                document.write(a);
+            }
+            functionTest(5);
+            document.write(a); // 에러남
+            // undefined 아님,,,
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

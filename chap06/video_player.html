@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <script>
+    </script>
+</head>
+<body>
+    
+    <section id = "s1">
+        <h3>비디오 플레이어</h3>
+        <video width=800 height = 600 oncanplay="initConrol()" id = "myVideo">
+            <source src = "white.mp4" type = "video/mp4">
+            이 브라우저는 비디오 태그를 지원하지 않습니다.
+        </video>
+        <footer>Video   (c) Copyright 2018 by Mirim</footer>
+    </section>
+
+    <section id = "s2">
+        <table align = "center" height = 20%>
+            <tr>
+                <td>
+                    <legend>주요장면</legend>
+                            <select name="scenes" size="3" onchange="selectScene(this)">
+                            <option value="00:25">00:25 너네 왜캐 귀여운거야?</option> 
+                            <option value="00:48">00:48 거기서 뭐행?</option>
+                            <option value="01:25">01:25 짧아서 못 올라옴</option>
+                            <option value="01:49">01:49 쩝쩝</option>
+                            <option value="02:14">02:14 빼꼼</option>
+                            </select>
+                    </td>
+                <td><legend>Player</legend>
+                    <input type = "button" value = "▶" id = "playButton" onclick = "playPause(this)">
+                    <input type = "range" min = "0" max = "100" value = "0" step = "1" id = "currentPosition" onchange="updateProgress(this)">
+                    Time: <span id="timePlayed">0:0</span>
+                </td>
+                <td><legend>Volume</legend>
+                    <input type = "button" value = "♪" onclick = "mute(this)">
+                    <input type = "range" min = "0" max = "1" value = "0.5" step = "0.01" onchange="adjustVolume(this)">
+                    Volume: <span id="currentVolume"></span>
+                </td>
+            </tr>
+        </table>
+    </section>
+    <script src = "video_player.js"></script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!doctype html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <script>
+           function willnotchange(x){
+               document.write("함수내부의 전달 직후 x:"+x+"<br>");//1
+               x=2;//지역변수(매개 변수로 사용된 변수는 지역변수)
+               document.write("함수내부의 변화 후 x:"+x+"<br>");//2
+           }
+           var x = 1;//전역변수
+           document.write("원 데이터 x:"+x+"<br>");//1
+           willnotchange(x);
+           document.write("함수 호출 이후 x:"+x+"<br>");//1
+        </script>
+    
+    </body>
+</html>

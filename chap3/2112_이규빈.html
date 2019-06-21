@@ -1,0 +1,55 @@
+<!doctype html>
+  <html>
+    <head>
+      <meta charset="utf-8">
+      <title>2112_이규빈</title>
+      <link rel="stylesheet" href="styles.css">
+      <script>
+
+        num =parseInt((Math.random()*100)+1);//랜덤값
+        count = 0;
+function randomgame(){
+
+      if(count < 10){
+
+          input = document.getElementById("user").value;//사용자 입력
+           count++;
+
+           if(num==input){
+                document.getElementById("result").innerHTML="정답 : " + num ;//정답횟수 출력
+                document.getElementById("try").value=("시도횟수 : "+count+"번");//시도횟수 출력
+                return 0;
+              }//if
+           
+            else if(input<num){
+                  document.getElementById("hint").value=(input+"보다 큽니다.");//입력값이 랜덤값보다 작으면 크다고 출력
+                  document.getElementById("try").value=("시도횟수 : "+count+"번");//시도횟수 출력
+
+                }//if
+
+             else{
+                  document.getElementById("hint").value=(input+"보다 작습니다.");//입력값이 랜덤값보다 크면 작다고 출력
+                  document.getElementById("try").value=("시도횟수 : "+count+"번");//시도횟수 출력
+                }//else
+                return -1;
+       }//while
+       alert("종료합니다");
+       document.getElementById("try").value=("시도횟수 : "+count+"번");//시도횟수 출력
+
+    }//function
+      </script>
+    </head>
+   <body>
+        <h1>숫자 맞추기 게임</h1>
+         숫자는 1~100사이에 있습니다.
+         <form>
+            숫자 : <input type="text" id="user" size="5">
+                   <input type="button" id="btn" value="확인" onclick="randomgame()">
+
+            힌트 :  <input type="text" id="hint" size="16">
+            
+            시도횟수 :	<input type="text" id="try" size="30">
+            </form>
+            <div id = "result"></div>
+    </body>
+  </html>

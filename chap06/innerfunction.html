@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+function pytagoras(w,h){
+    function square(x){//내부 자기를 포함한pytagoras함수에 의해서만 실행=>겹쳐써지지 않아서 오류남
+        return x=x;
+    }
+   return Math.sqrt(square(w) + square(h));
+    }
+
+    function square(w,he,hy){
+        if(w*w + he*he==hy*hy){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    alert(pytagoras(3,4));//오류남 0 나옴
+    //=>함수명이 같으면 두 함수의 파라미터 갯수가 달라서 오류남
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

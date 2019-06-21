@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <script>
+            // 함수 매개변수의 타입 검사를 하지 않는다.
+            function add(x,y){
+                // 타입을 체크하는 경우
+                if(typeof x=="number"&&typeof y=="number")
+                    alert(x+y);
+                else alert("타입이 틀렸으");
+            }
+            add(2,2);
+            add("2", "2");
+            add("hello ","world");
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

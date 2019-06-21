@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <script>
+            function scope(){
+                var x=3;
+                document.write("함수내부의 변화 후 x : "+x+"<br>");
+            }
+            var x=2;
+            document.write("함수 호출 이전 x : "+x+"<br>");
+            scope();
+            document.write("함수 호출 이후 x : "+x+"<br>");
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

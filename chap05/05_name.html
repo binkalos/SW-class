@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <script>
+            // 함수에 전달하는 변수의 이름이 함수정의에 사용한 변수이름과 동일할 필요는 없다.
+            var c = 5;
+            var d = 3;
+
+            function two_switch(a,b){
+                var temp;
+                if(a>b){
+                    temp = a;
+                    a = b;
+                    b = temp;
+                }
+                document.write("a : "+a+"<br>"+" b : "+b);
+            }
+            two_switch(c,d);
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

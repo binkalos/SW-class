@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+    function functionTest(a){ //파라미터
+        var a = "a는 지역변수";
+        document.write(a); //지역변수 / 밖에서 쓸 수 없다.
+    }
+    functionTest(); //함수 종료 후 메모리(실행 객체)에서 사라진다.
+    //없는 a를 어떻게 출력해?
+    document.write(a); //Uncaught ReferenceError: a is not defined (아예 메모리가 없음)
+    //undefined => 메모리 할당 ok => 실제 값 binding not yet
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!doctype html>
+  <html>
+    <head>
+      <meta charset="utf-8">
+      <title>2112_이규빈</title>
+      <link rel="stylesheet" href="styles.css">
+    </head>
+   <body>
+     
+    <form name="myForm"  id="theForm">
+     <input type = "text" id = "target" name="text1">
+     <input type="submit" value="제출" onclick="process()">
+     
+    </form>
+    <script>
+        function process(){
+            //텍스트필드를 통해 입력받은 값을 alert창을 통해 출력
+
+            //1.id로 찾기 :docement.getElementBtId();
+            var target = document.getElementById("target").value;
+            alert(target);
+            //2.입력 양식에서 찾기 form 이름과 input이름으로 찾아야 함
+            var target = document.myForm.text1.value;
+            alert(target);
+            //3.태그 이름으로 찾기
+            var target = document.getElementsByTagName("input");
+            alert(target[0].value);
+            //4.입력 양식 요소 배열로 찾기
+            var target = document.forms[0].elements[0].value;
+            alert(target);
+        }
+        </script>
+  
+   
+        
+    </body>
+  </html>

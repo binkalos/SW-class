@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset = "utf-8">
+        <title>2112</title>
+    </head>
+    <body>
+        <script>
+        function Car(model,speed,color){
+            this.model = model;
+            this.speed = speed;
+            this.color = color;
+            this.brake = function(){
+                this.speed -= 10;
+            }
+            this.accel = function(){
+                this.speed += 10;
+            }
+
+        }
+        var myCar = new Car("520d",60,"whilte");
+        alert(Car);
+        </script>
+    </body>
+</html>

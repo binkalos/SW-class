@@ -1,0 +1,1646 @@
+<!Doctype html>
+<html>
+    <head>
+        <meta charset = "utf-8">
+        <title>2112</title>
+        <style>
+        canvas{
+            margin: 30px 0 0 50px;
+        }
+        </style>
+    </head>
+    
+    <body >
+        <script>
+            window.onload=game;
+
+            var ctx;
+            var aflag = false; //이거는 a에 함수가 들어갔는지 보기 위함 ㅎㅎ
+            var audio = new Audio("bgm.mp3");
+        
+            //미리 제공하는 사과열매3개 표현위해 
+            var apple1,apple2,apple3;
+            var inter;
+            var q;
+            var count=0;//맞은 갯수 확인 위해 사용
+            var fail=0;
+
+            function game(){
+                ctx = document.getElementById("canvas").getContext("2d");
+                
+                var btn1 = new Image();
+                btn1.src = "btn01.png";
+                btn1.addEventListener('load',function(){
+                    ctx.drawImage(btn1,653,15,100,100);
+                },false);
+                
+                var btn2 = new Image();
+                btn2.src = "btn02.png";
+                btn2.addEventListener('load',function(){
+                    ctx.drawImage(btn2,30,15,100,100);
+                },false);
+                canvas.addEventListener("click", makeNewItem, false);
+                
+                var backpic = new Image();
+                backpic.addEventListener('load',function(){
+                    ctx.drawImage(backpic,90,100,600,500);
+                },false);
+                backpic.src="kumabackground.png";
+
+                /*var skatchbook = new Image();
+                skatchbook.addEventListener('load',function(){
+                    ctx.drawImage(skatchbook,0,0,840,300);
+                },false);
+                skatchbook.src="skatchbook_1.png";
+*/
+                apple1 = document.getElementById('apple1');
+                apple2 = document.getElementById('apple2');
+                apple3 = document.getElementById('apple3');  
+  
+            }//game
+
+            function die(){
+                ctx.clearRect(0, 0, 800, 600);
+                    var ending = new Image();
+                    ending.addEventListener('load',function(){
+                    ctx.drawImage(ending,0,0,800,600);
+                    },false);
+                    ending.src="failback.jpg";
+            }
+        //문제 보여주는 함수
+           //1번
+            function q1(){
+
+                var queston1 = new Image();
+                queston1.addEventListener('load',function(){
+                    ctx.drawImage(queston1,245,20,300,150);
+                },false);
+                queston1.src="flag.png";
+
+                var austria = new Image();
+                austria.src = "Austria.png";
+                austria.addEventListener('load',function(){
+                    ctx.drawImage(austria,20,260,240,200);
+                },false);
+                
+                var japan = new Image();
+                japan.src = "Japan.png";
+                japan.addEventListener('load',function(){
+                    ctx.drawImage(japan,270,260,250,200);
+                },false);
+
+                var bangladesh = new Image();
+                bangladesh.src = "Bangladesh.png";
+                bangladesh.addEventListener('load',function(){
+                    ctx.drawImage(bangladesh,530,260,250,200);
+                },false);
+
+                canvas.removeEventListener("click", makeNewItem, false);
+                canvas.addEventListener("click", q1answer, false);
+            }
+            
+            //2번
+            function q2(){
+                ctx.clearRect(0, 0, 800, 600);
+
+                var queston2 = new Image();
+                queston2.addEventListener('load',function(){
+                    ctx.drawImage(queston2,245,20,300,150);
+                },false);
+                queston2.src="capital.png";
+  
+                var kyoto = new Image();
+                kyoto.src = "kyoto.png";
+                kyoto.addEventListener('load',function(){
+                    ctx.drawImage(kyoto,20,260,250,200);
+                },false);
+                
+                var osaka = new Image();
+                osaka.src = "osaka.png";
+                osaka.addEventListener('load',function(){
+                    ctx.drawImage(osaka,272,260,250,200);
+                },false);
+
+                var tokyo = new Image();
+                tokyo.src = "tokyo.png";
+                tokyo.addEventListener('load',function(){
+                    ctx.drawImage(tokyo,527,260,250,200);
+                },false);
+
+                canvas.removeEventListener("click",q1answer, false);
+                canvas.addEventListener("click", q2answer, false);
+                
+            }
+
+            //3번
+            function q3(){
+                ctx.clearRect(0, 0, 800, 600);
+
+                var queston3 = new Image();
+                queston3.addEventListener('load',function(){
+                    ctx.drawImage(queston3,245,20,300,150);
+                },false);
+                queston3.src="clothes.png";
+
+                var jclothes = new Image();
+                jclothes.src = "jclothes.png";
+                jclothes.addEventListener('load',function(){
+                    ctx.drawImage(jclothes,30,220,200,300);
+                },false);
+                
+                var iclothes = new Image();
+                iclothes.src = "iclothes.png";
+                iclothes.addEventListener('load',function(){
+                    ctx.drawImage(iclothes,320,220,200,300);
+                },false);
+
+                var aclothes = new Image();
+                aclothes.src = "aclothes.png";
+                aclothes.addEventListener('load',function(){
+                    ctx.drawImage(aclothes,580,200,200,315);
+                },false);
+                
+                canvas.removeEventListener("click", q2answer, false);
+                canvas.addEventListener("click", q3answer, false);
+            }
+            
+            //4번
+            function q4(){
+                ctx.clearRect(0, 0, 800, 600);
+
+                var queston4 = new Image();
+                queston4.addEventListener('load',function(){
+                    ctx.drawImage(queston4,245,20,340,150);
+                },false);
+                queston4.src="sports.png";
+
+                var yudo = new Image();
+                yudo.src = "yudo.png";
+                yudo.addEventListener('load',function(){
+                    ctx.drawImage(yudo,20,260,250,200);
+                },false);
+                
+                var taekwondo = new Image();
+                taekwondo.src = "taekwondo.png";
+                taekwondo.addEventListener('load',function(){
+                    ctx.drawImage(taekwondo,272,260,250,200);
+                },false);
+
+                var boxing = new Image();
+                boxing.src = "boxing.jpg";
+                boxing.addEventListener('load',function(){
+                    ctx.drawImage(boxing,530,260,250,200);
+                },false);
+                
+                canvas.removeEventListener("click", q3answer, false);
+                canvas.addEventListener("click", q4answer, false);
+            }
+           //5번
+            function q5(){
+                ctx.clearRect(0, 0, 800, 600);
+                
+                var queston5 = new Image();
+                queston5.addEventListener('load',function(){
+                    ctx.drawImage(queston5,250,20,350,150);
+                },false);
+                queston5.src="island.png";
+
+                var ex4 = new Image();
+                ex4.addEventListener('load',function(){
+                    ctx.drawImage(ex4,135,185,520,70);
+                },false);
+                ex4.src="ex4.png";
+
+                var  hirosima= new Image();
+                hirosima.src = "hirosima.png";
+                hirosima.addEventListener('load',function(){
+                    ctx.drawImage(hirosima,10,280,180,200);
+                },false);
+                
+                var hoensue = new Image();
+                hoensue.src = "hoensue.png";
+                hoensue.addEventListener('load',function(){
+                    ctx.drawImage(hoensue,210,280,180,200);
+                },false);
+
+                var sikoku = new Image();
+                sikoku.src = "sikoku.png";
+                sikoku.addEventListener('load',function(){
+                    ctx.drawImage(sikoku,410,280,180,200);
+                },false);
+
+                var hutkaido = new Image();
+                hutkaido.src = " hutkaido.png";
+                hutkaido.addEventListener('load',function(){
+                    ctx.drawImage(hutkaido,610,280,180,200);
+                },false);
+
+                canvas.removeEventListener("click", q4answer, false);
+                canvas.addEventListener("click", q5answer, false);
+            }
+            //6번
+            function q6(){
+                ctx.clearRect(0, 0, 800, 600);
+
+                var queston6 = new Image();
+                queston6.addEventListener('load',function(){
+                    ctx.drawImage(queston6,245,20,300,150);
+                },false);
+                queston6.src="food.png";
+
+                var Soybean = new Image();
+                Soybean.src = "Soybean.jpg";
+                Soybean.addEventListener('load',function(){
+                    ctx.drawImage(Soybean,20,260,250,200);
+                },false);
+                
+                var kimch = new Image();
+                kimch.src = " kimch.jpg";
+                kimch.addEventListener('load',function(){
+                    ctx.drawImage( kimch,272,260,250,200);
+                },false);
+
+                var nato = new Image();
+                nato.src = "nato.jpg";
+                nato.addEventListener('load',function(){
+                    ctx.drawImage(nato,530,260,250,200);
+                },false);
+                
+                canvas.removeEventListener("click", q5answer, false);
+                canvas.addEventListener("click", q6answer, false);
+            }
+
+            //7번 
+            function q7(){
+                ctx.clearRect(0, 0, 800, 600);
+
+                var queston7 = new Image();
+                queston7.addEventListener('load',function(){
+                    ctx.drawImage(queston7,250,20,350,150);
+                },false);
+                queston7.src="select.png";
+
+                var ex1 = new Image();
+                ex1.addEventListener('load',function(){
+                    ctx.drawImage(ex1,135,185,520,70);
+                },false);
+                ex1.src="ex1.png";
+
+                var ki = new Image();
+                ki.src = "ki.png";
+                ki.addEventListener('load',function(){
+                    ctx.drawImage(ki,20,280,250,200);
+                },false);
+                
+                var ga = new Image();
+                ga.src = "ga.png";
+                ga.addEventListener('load',function(){
+                    ctx.drawImage(ga,277,280,250,200);
+                },false);
+
+                var ka = new Image();
+                ka.src = "ka.png";
+                ka.addEventListener('load',function(){
+                    ctx.drawImage(ka,535,280,250,210);
+                },false);
+                
+                canvas.removeEventListener("click", q6answer, false);
+                canvas.addEventListener("click", q7answer, false);
+            }
+            //8번
+            function q8(){
+                ctx.clearRect(0, 0, 800, 600);
+
+                var queston8 = new Image();
+                queston8.addEventListener('load',function(){
+                    ctx.drawImage(queston8,245,20,300,150);
+                },false);
+                queston8.src="food.png";
+
+                var pizza = new Image();
+                pizza.src = "pizza.jpg";
+                pizza.addEventListener('load',function(){
+                    ctx.drawImage(pizza,20,260,250,200);
+                },false);
+                
+                var okonami = new Image();
+                okonami.src = "okonami.jpg";
+                okonami.addEventListener('load',function(){
+                    ctx.drawImage(okonami,272,260,250,200);
+                },false);
+
+                var nokdojeon = new Image();
+                nokdojeon.src = "nokdojeon.jpg";
+                nokdojeon.addEventListener('load',function(){
+                    ctx.drawImage(nokdojeon,530,260,250,200);
+                },false);
+                
+                canvas.removeEventListener("click", q7answer, false);
+                canvas.addEventListener("click", q8answer, false);
+            }
+
+            //9
+            function q9(){
+                ctx.clearRect(0, 0, 800, 600);
+
+                var queston9 = new Image();
+                queston9.addEventListener('load',function(){
+                    ctx.drawImage(queston9,250,20,350,150);
+                },false);
+                queston9.src="select.png";
+
+                var ex2 = new Image();
+                ex2.addEventListener('load',function(){
+                    ctx.drawImage(ex2,135,185,520,70);
+                },false);
+                ex2.src="ex2.png";
+
+                var hu = new Image();
+                hu.src = "hu.png";
+                hu.addEventListener('load',function(){
+                    ctx.drawImage(hu,20,280,250,200);
+                },false);
+                
+                var bu = new Image();
+                bu.src = "bu.png";
+                bu.addEventListener('load',function(){
+                    ctx.drawImage(bu,277,280,250,200);
+                },false);
+
+                var pu = new Image();
+                pu.src = "pu.png";
+                pu.addEventListener('load',function(){
+                    ctx.drawImage(pu,535,280,250,200);
+                },false);
+                
+                canvas.removeEventListener("click", q8answer, false);
+                canvas.addEventListener("click", q9answer, false);
+            }
+
+            //10
+            function q10(){
+                ctx.clearRect(0, 0, 800, 600);
+
+                var queston10 = new Image();
+                queston10.addEventListener('load',function(){
+                    ctx.drawImage(queston10,245,20,300,150);
+                },false);
+                queston10.src="head.png";
+
+                var ex3 = new Image();
+                ex3.addEventListener('load',function(){
+                    ctx.drawImage(ex3,135,185,520,70);
+                },false);
+                ex3.src="ex3.png";
+
+                var o = new Image();
+                o.src = "o.png";
+                o.addEventListener('load',function(){
+                    ctx.drawImage(o,120,280,250,200);
+                },false);
+                
+                var x = new Image();
+                x.src = "x.png";
+                x.addEventListener('load',function(){
+                    ctx.drawImage(x,425,280,250,200);
+                },false);
+
+                 canvas.removeEventListener("click", q9answer, false);
+                 canvas.addEventListener("click", q10answer, false);
+            }
+
+             //11
+             function q11(){
+                ctx.clearRect(0, 0, 800, 600);
+
+                var queston11 = new Image();
+                queston11.addEventListener('load',function(){
+                    ctx.drawImage(queston11,240,20,300,150);
+                },false);
+                queston11.src="retirement.png";
+
+                var an = new Image();
+                an.src = "an.png";
+                an.addEventListener('load',function(){
+                    ctx.drawImage(an,20,260,250,200);
+                },false);
+                
+                var won = new Image();
+                won.src = "won.png";
+                won.addEventListener('load',function(){
+                    ctx.drawImage(won,275,260,250,200);
+                },false);
+
+                var dollar = new Image();
+                dollar.src = "dollar.png";
+                dollar.addEventListener('load',function(){
+                    ctx.drawImage(dollar,530,260,250,200);
+                },false);
+
+                 canvas.removeEventListener("click", q10answer, false);
+                 canvas.addEventListener("click", q11answer, false);
+            }
+
+            //12
+            function q12(){
+                ctx.clearRect(0, 0, 800, 600);
+
+                var queston12 = new Image();
+                queston12.addEventListener('load',function(){
+                    ctx.drawImage(queston12,240,20,300,150);
+                },false);
+                queston12.src="traditionplay.png";
+
+                var k = new Image();
+                k.src = "koreaplay.jpg";
+                k.addEventListener('load',function(){
+                    ctx.drawImage(k,20,260,250,200);
+                },false);
+                
+                var u = new Image();
+                u.src = "usaplay.jpg";
+                u.addEventListener('load',function(){
+                    ctx.drawImage(u,275,260,250,200);
+                },false);
+
+                var j = new Image();
+                j.src = "japanplay.jpeg";
+                j.addEventListener('load',function(){
+                    ctx.drawImage(j,530,260,250,200);
+                },false);
+
+                 canvas.removeEventListener("click", q11answer, false);
+                 canvas.addEventListener("click", q12answer, false);
+            }
+
+            //13
+
+            function q13(){
+                ctx.clearRect(0, 0, 800, 600);
+
+                var queston13 = new Image();
+                queston13.addEventListener('load',function(){
+                    ctx.drawImage(queston13,245,20,300,150);
+                },false);
+                queston13.src="selectkatakana.png";
+
+                var ex5 = new Image();
+                ex5.addEventListener('load',function(){
+                    ctx.drawImage(ex5,135,185,520,70);
+                },false);
+                ex5.src="ex5.png";
+
+                var tu = new Image();
+                tu.src = "tu.png";
+                tu.addEventListener('load',function(){
+                    ctx.drawImage(tu,20,280,250,200);
+                },false);
+
+                var si = new Image();
+                si.src = "si.png";
+                si.addEventListener('load',function(){
+                    ctx.drawImage(si,277,280,250,200);
+                },false);
+                
+                var zo = new Image();
+                zo.src = "zo.png";
+                zo.addEventListener('load',function(){
+                    ctx.drawImage(zo,535,280,250,200);
+                },false);
+
+                 canvas.removeEventListener("click", q12answer, false);
+                 canvas.addEventListener("click", q13answer, false);
+            }
+
+            //14
+            function q14(){
+                ctx.clearRect(0, 0, 800, 600);
+
+                var queston14 = new Image();
+                queston14.addEventListener('load',function(){
+                    ctx.drawImage(queston14,240,20,300,150);
+                },false);
+                queston14.src="animation.png";
+
+                var fixa = new Image();
+                fixa.src = "fixa.png";
+                fixa.addEventListener('load',function(){
+                    ctx.drawImage(fixa,20,260,250,200);
+                },false);
+                
+                var ziberi = new Image();
+                ziberi.src = "ziberi.png";
+                ziberi.addEventListener('load',function(){
+                    ctx.drawImage(ziberi,275,260,250,200);
+                },false);
+
+                var deseny = new Image();
+                deseny .src = "deseny.png";
+                deseny .addEventListener('load',function(){
+                    ctx.drawImage(deseny ,530,260,250,200);
+                },false);
+
+                 canvas.removeEventListener("click", q13answer, false);
+                 canvas.addEventListener("click", q14answer, false);
+            }
+            //15
+            function q15(){
+                ctx.clearRect(0, 0, 800, 600);
+
+                var queston15 = new Image();
+                queston15.addEventListener('load',function(){
+                    ctx.drawImage(queston15,245,20,300,150);
+                },false);
+                queston15.src="traditionparty.png";
+
+                var ex7 = new Image();
+                ex7.addEventListener('load',function(){
+                    ctx.drawImage(ex7,135,185,520,70);
+                },false);
+                ex7.src="ex7.png";
+
+                var party1 = new Image();
+                party1.src = "party1.png";
+                party1.addEventListener('load',function(){
+                    ctx.drawImage(party1,20,280,250,200);
+                },false);
+
+                var party3 = new Image();
+                party3.src = "party3.png";
+                party3.addEventListener('load',function(){
+                    ctx.drawImage(party3,277,280,250,200);
+                },false);
+                
+                var party2 = new Image();
+                party2.src = "party2.png";
+                party2.addEventListener('load',function(){
+                    ctx.drawImage(party2,535,280,250,200);
+                },false);
+
+                 canvas.removeEventListener("click", q14answer, false);
+                 canvas.addEventListener("click", q15answer, false);
+            }
+
+
+            //16
+             function q16(){
+                ctx.clearRect(0, 0, 800, 600);
+
+                var queston16 = new Image();
+                queston16.addEventListener('load',function(){
+                    ctx.drawImage(queston16,245,20,300,150);
+                },false);
+                queston16.src="Politics.png";
+
+                var ex8 = new Image();
+                ex8.addEventListener('load',function(){
+                    ctx.drawImage(ex8,135,185,520,70);
+                },false);
+                ex8.src="ex8.png";
+
+               var o2 = new Image();
+                o2.src = "o.png";
+                o2.addEventListener('load',function(){
+                    ctx.drawImage(o2,120,280,250,200);
+                },false);
+                
+                var x2 = new Image();
+                x2.src = "x.png";
+                x2.addEventListener('load',function(){
+                    ctx.drawImage(x2,425,280,250,200);
+                },false);
+
+                 canvas.removeEventListener("click", q15answer, false);
+                 canvas.addEventListener("click", q16answer, false);
+            }
+
+            //17
+
+             function q17(){
+                ctx.clearRect(0, 0, 800, 600);
+
+                var queston17 = new Image();
+                queston17.addEventListener('load',function(){
+                    ctx.drawImage(queston17,245,20,300,150);
+                },false);
+                queston17.src="japanstudy.png";
+
+                 var ex6 = new Image();
+                ex6.addEventListener('load',function(){
+                    ctx.drawImage(ex6,135,185,520,70);
+                },false);
+                ex6.src="ex6.png";
+
+               var o3 = new Image();
+                o3.src = "o.png";
+                o3.addEventListener('load',function(){
+                    ctx.drawImage(o3,120,280,250,200);
+                },false);
+                
+                var x3 = new Image();
+                x3.src = "x.png";
+                x3.addEventListener('load',function(){
+                    ctx.drawImage(x3,425,280,250,200);
+                },false);
+
+                 canvas.removeEventListener("click", q16answer, false);
+                 canvas.addEventListener("click", q17answer, false);
+            }
+
+            var y = 200;
+            //사과 띄우기
+            function viewapple(){
+
+                switch(q) {//사과 떨어지는 위치가 같아야 하기 때문에 사용 문제마다 q=1이런식으로 
+                    case 1:{//문제 1번일때 사용
+                        if(apple1.style.top !== '680px') {
+                            y += 6;
+                            apple1.style.top = y + 'px';
+                        } else {
+                            clearInterval(inter);//setInterval반복 멈추게
+                            //setInterval은 일정 시간마다 함수 실행위해 사용 나는 10초 
+                        }
+                        break;
+                    }
+                    case 2:{
+                        if(apple2.style.top !== '684px') {
+                            y += 6;
+                            apple2.style.top = y + 'px';
+                        } else {
+                            clearInterval(inter);
+                        }
+
+                        break;
+                    }
+                    case 3:{
+                        if(apple3.style.top !== '704px') {
+                            y += 6;
+                            apple3.style.top = y + 'px';
+                        } else {
+                            clearInterval(inter);
+                        }
+
+                        break;
+                    }
+                    case 4:{
+                        if(apple4.style.top !== '744px') {
+                            y += 6;
+                            apple4.style.top = y + 'px';
+                        } else {
+                            clearInterval(inter);
+                        }
+
+                        break;
+                    }
+                    case 5:{
+                        if(apple5.style.top !== '854px') {
+                            y += 6;
+                            apple5.style.top = y + 'px';
+                        } else {
+                            clearInterval(inter);
+                        }
+
+                        break;
+                    }
+                    case 6:{
+                        if(apple6.style.top !== '994px') {
+                            y += 6;
+                            apple6.style.top = y + 'px';
+                        } else {
+                            clearInterval(inter);
+                        }
+
+                        break;
+                    }
+                    case 7:{
+                        if(apple7.style.top !== '864px') {
+                            y += 6;
+                            apple7.style.top = y + 'px';
+                        } else {
+                            clearInterval(inter);
+                        }
+
+                        break;
+                    }
+                    case 8:{
+                        if(apple8.style.top !== '849px') {
+                            y += 6;
+                            apple8.style.top = y + 'px';
+                        } else {
+                            clearInterval(inter);
+                        }
+
+                        break;
+                    }
+                    case 9:{
+                        if(apple9.style.top !== '942px') {
+                            y += 6;
+                            apple9.style.top = y + 'px';
+                        } else {
+                            clearInterval(inter);
+                        }
+
+                        break;
+                    }
+                    case 10:{
+                        if(apple10.style.top !== '684px') {
+                            y += 6;
+                            apple10.style.top = y + 'px';
+                        } else {
+                            clearInterval(inter);
+                        }
+
+                        break;
+                    }
+                    case 11:{
+                        if(apple11.style.top !== '774px') {
+                            y += 6;
+                            apple11.style.top = y + 'px';
+                        } else {
+                            clearInterval(inter);
+                        }
+                        break;
+                    }
+                    case 12:{
+                        if(apple12.style.top !== '799px') {
+                            y += 6;
+                            apple12.style.top = y + 'px';
+                        } else {
+                            clearInterval(inter);
+                        }
+
+                        break;
+                    }
+                    case 13:{
+                        if(apple13.style.top !== '1074px') {
+                            y += 6;
+                            apple13.style.top = y + 'px';
+                        } else {
+                            clearInterval(inter);
+                        }
+
+                        break;
+                    }
+                    case 14:{
+                        if(apple14.style.top !== '944px') {
+                            y += 6;
+                            apple14.style.top = y + 'px';
+                        } else {
+                            clearInterval(inter);
+                        }
+
+                        break;
+                    }
+                    case 15:{
+                        if(apple15.style.top !== '865px') {
+                            y += 6;
+                            apple15.style.top = y + 'px';
+                        } else {
+                            clearInterval(inter);
+                        }
+
+                        break;
+                    }
+                    case 16:{
+                        if(apple16.style.top !== '762px') {
+                            y += 6;
+                            apple16.style.top = y + 'px';
+                        } else {
+                            clearInterval(inter);
+                        }
+
+                        break;
+                    }
+                    case 17:{
+                        if(apple17.style.top !== '1002px') {
+                            y += 6;
+                            apple17.style.top = y + 'px';
+                        } else {
+                            clearInterval(inter);
+                        }
+
+                        break;
+                    }
+                    case 18:{
+                        if(apple18.style.top !== '1074px') {
+                            y += 6;
+                            apple18.style.top = y + 'px';
+                        } else {
+                            clearInterval(inter);
+                        }
+
+                        break;
+                    }
+                    case 19:{
+                        if(apple19.style.top !== '1164px') {
+                            y += 6;
+                            apple19.style.top = y + 'px';
+                        } else {
+                            clearInterval(inter);
+                        }
+
+                        break;
+                    }
+                    case 20:{
+                        if(apple20.style.top !== '934px') {
+                            y += 6;
+                            apple20.style.top = y + 'px';
+                        } else {
+                            clearInterval(inter);
+                        }
+
+                        break;
+                    }
+                }//
+                
+            }//
+
+            
+
+            //정답인지 아닌지 확인하는 함수들
+            function q1answer(e) {
+
+                q = 1;
+
+                mx = e.offsetX;
+                my = e.offsetY;
+
+                    if((20 <= mx && mx <= 20+240) && (260 <= my && my <= 260+200)) {
+                        //틀린답
+                        c1.style.visibility="visible";
+                        inter = setInterval(viewapple, 10);
+                        fail++;
+                       
+                        if(fail==5){
+                           die();
+                        }
+                        else{
+                        q2();
+                        }
+                    }//if
+
+                    if((270 <= mx && mx <= 270+250) && (260 <= my && my <=260+200)) {
+                        //정답
+                        apple4.style.visibility="visible";
+                        count++;
+                        q2();
+                    }//if
+
+                    if((527 <= mx && mx <= 527+250) && (260 <= my && my <= 260+200)) {
+                        //틀린답
+                        c1.style.visibility="visible";
+                        inter = setInterval(viewapple, 10);
+                        fail++;
+
+                        if(fail==5){
+                           die();
+                        }
+                        else{
+                            q2();
+                        }
+                    }//if
+            }
+
+            function q2answer(e) {
+                y = 624;
+                q = 2;
+
+                mx = e.offsetX;
+                my = e.offsetY;
+
+                    if((20 <= mx && mx <= 20+250) && (260 <= my && my <= 260+200)) {
+                        //틀린답
+                        c2.style.visibility="visible";
+                        inter = setInterval(viewapple, 10);
+                        fail++;
+
+                        if(fail==5){
+                           die();
+                        }
+                        else{
+                            q3();
+                        }
+                    }//if
+
+                    if((272 <= mx && mx <= 272+250) && (260 <= my && my <=260+200)) {
+                        //틀린답
+                        c2.style.visibility="visible";
+                        inter = setInterval(viewapple, 10);
+                        fail++;
+
+                        if(fail==5){
+                           die();
+                        }
+                        else{
+                            q3();
+                        }
+                    }//if
+
+                    if((530 <= mx && mx <= 530+250) && (260 <= my && my <= 260+200)) {
+                        //정답
+                        apple5.style.visibility="visible";
+                        count++;
+                        q3();
+                    }//if
+            }
+
+            function q3answer(e) {
+                y = 50;
+                q = 3;
+
+                mx = e.offsetX;
+                my = e.offsetY;
+
+                    if((30 <= mx && mx <= 30+200) && (220 <= my && my <= 220+300)) {
+                         //정답
+                        apple6.style.visibility="visible";
+                        count++;
+                        q4();
+                    }//if
+
+                    if((320 <= mx && mx <= 320+200) && (200 <= my && my <=200+300)) {
+                        //틀린답
+                        c3.style.visibility="visible";
+                        inter = setInterval(viewapple, 10);
+                        fail++;
+
+                        if(fail==5){
+                           die();
+                        }
+                        else{
+                            q4();
+                        }
+                    }//if
+
+                    if((580 <= mx && mx <= 580+200) && (200 <= my && my <= 200+310)) {
+                        //틀린답
+                        c3.style.visibility="visible";
+                        inter = setInterval(viewapple, 10);
+                        fail++;
+
+                        if(fail==5){
+                           die();
+                        }
+                        else{
+                            q4()
+                        };
+                    }//if
+            }
+            
+            function q4answer(e) {
+                y=90;
+                q=4;
+                mx = e.offsetX;
+                my = e.offsetY;
+
+                     if((20 <= mx && mx <= 20+250) && (260 <= my && my <= 260+200)) {
+                        //정답
+                        apple7.style.visibility="visible";
+                        count++;
+                        q5();
+                    }//if
+
+                    if((272 <= mx && mx <= 272+250) && (260 <= my && my <=260+200)) {
+                        //틀린답
+                        c4.style.visibility="visible";
+                        inter = setInterval(viewapple, 10);
+                        fail++;
+                        if(fail==5){
+                           die();
+                        }
+                        else{
+                        q5();
+                        }
+                    }//if
+
+                    if((530 <= mx && mx <= 530+250) && (260 <= my && my <= 260+200)) {
+                        //틀린답
+                        c4.style.visibility="visible";
+                        inter = setInterval(viewapple, 10);
+                        fail++;
+                        if(fail==5){
+                           die();
+                        }
+                        else{
+                        q5();
+                        }
+                    }//if
+            }
+            
+            function q5answer(e) {
+                y = 200;
+                q=5;
+                mx = e.offsetX;
+                my = e.offsetY;
+
+                    if((20 <= mx && mx <= 20+250) && (260 <= my && my <= 260+200)) {
+                         //정답
+                        apple8.style.visibility="visible";
+                        count++;
+                        q6();
+                    }//if
+
+                    if((272 <= mx && mx <= 272+250) && (260 <= my && my <=260+200)) {
+                        //틀린답
+                        c5.style.visibility="visible";
+                        inter = setInterval(viewapple, 10);
+                        fail++;
+                        if(fail==5){
+                           die();
+                        }
+                        else{
+                        q6();
+                        }
+                    }//if
+
+                    if((530 <= mx && mx <= 530+250) && (260 <= my && my <= 260+200)) {
+                        //틀린답
+                        c5.style.visibility="visible";
+                        inter = setInterval(viewapple, 10);
+                        fail++;
+                        if(fail==5){
+                           die();
+                        }else{
+                        q6();
+                        }
+                    }//if
+
+                    if((530 <= mx && mx <= 530+250) && (260 <= my && my <= 260+200)) {
+                        //틀린답
+                        c5.style.visibility="visible";
+                        inter = setInterval(viewapple, 10);
+                        fail++;
+                        if(fail==5){
+                           die();
+                        }else{
+                        q6();
+                        }
+                    }//if
+            }
+
+            function q6answer(e) {
+                y = 340;
+                q=6;
+
+                mx = e.offsetX;
+                my = e.offsetY;
+
+                    if((20 <= mx && mx <= 20+250) && (260 <= my && my <= 260+200)) {
+                        //틀린답
+                        c6.style.visibility="visible";
+                        inter = setInterval(viewapple, 10);
+                        fail++;
+                        if(fail==5){
+                           die();
+                        }
+                        else{
+                        q7();
+                        }
+                    }//if
+
+                    if((272 <= mx && mx <= 272+250) && (260 <= my && my <=260+200)) {
+                        //틀린답
+                        c6.style.visibility="visible";
+                        inter = setInterval(viewapple, 10);
+                        fail++;
+                        if(fail==5){
+                           die();
+                        }
+                        else{
+                        q7();
+                        }
+                    }//if
+
+                    if((530 <= mx && mx <= 530+250) && (260 <= my && my <= 260+200)) {
+                        //정답
+                        apple9.style.visibility="visible";
+                        count++;
+                        q7();
+                    }//if
+            }
+
+            function q7answer(e) {
+                y=210;
+                q=7;
+                mx = e.offsetX;
+                my = e.offsetY;
+
+                    if((20 <= mx && mx <= 20+250) && (260 <= my && my <= 260+200)) {
+                        //틀린답
+                        c7.style.visibility="visible";
+                        inter = setInterval(viewapple, 10);
+                        fail++;
+                        if(fail==5){
+                           die();
+                        }
+                        else{
+                          q8();
+                        }
+                    }//if
+
+                    if((272 <= mx && mx <= 272+250) && (260 <= my && my <=260+200)) {
+                        //틀린답
+                        c7.style.visibility="visible";
+                        inter = setInterval(viewapple, 10);
+                        fail++;
+                        if(fail==5){
+                           die();
+                        }
+                        else{
+                        q8();
+                        }
+                    }//if
+
+                    if((530 <= mx && mx <= 530+250) && (260 <= my && my <= 260+200)) {
+                        //정답
+                        apple10.style.visibility="visible";
+                        count++;
+                        q8();
+                    }//if
+            }
+
+            function q8answer(e) {
+                y=195;
+                q=8;
+                mx = e.offsetX;
+                my = e.offsetY;
+
+                    if((20 <= mx && mx <= 20+250) && (260 <= my && my <= 260+200)) {
+                        //틀린답
+                        c8.style.visibility="visible";
+                        inter = setInterval(viewapple, 10);
+                        fail++;
+                        if(fail==5){
+                           die();
+                        }
+                        else{
+                        q9();
+                        }
+                    }//if
+
+                    if((280 <= mx && mx <= 280+250) && (260 <= my && my <=260+200)) {
+                        //정답
+                        apple11.style.visibility="visible";
+                        count++;
+                        q9();
+                    }//if
+
+                    if((527 <= mx && mx <= 527+250) && (260 <= my && my <= 260+200)) {
+                        //틀린답
+                        c8.style.visibility="visible";
+                        inter = setInterval(viewapple, 10);
+                        fail++;
+                        if(fail==5){
+                           die();
+                        }
+                        else{
+                          q9();
+                        }
+                    }//if
+            }
+
+
+            function q9answer(e) {
+                y=288;
+                q=9;
+                mx = e.offsetX;
+                my = e.offsetY;
+
+                    if((20 <= mx && mx <= 20+250) && (280 <= my && my <= 280+200)) {
+                         //정답
+                        apple12.style.visibility="visible";
+                        count++;
+                        q10();
+                    }//if
+
+                    if((277 <= mx && mx <= 277+250) && (280 <= my && my <=280+200)) {
+                        //틀린답
+                        c9.style.visibility="visible";
+                        inter = setInterval(viewapple, 10);
+                        fail++;
+                        if(fail==5){
+                           die();
+                        }
+                        else{
+                           q10();
+                        }
+                    }//if
+
+                    if((535 <= mx && mx <= 535+250) && (280 <= my && my <= 280+200)) {
+                        //틀린답
+                        c9.style.visibility="visible";
+                        inter = setInterval(viewapple, 10);
+                        fail++;
+                        if(fail==5){
+                           die();
+                        }
+                        else{
+                        q10();
+                        }
+                    }//if
+            }
+
+            function q10answer(e) {
+                y=30;
+                q=10;
+                mx = e.offsetX;
+                my = e.offsetY;
+
+                    if((120 <= mx && mx <= 120+250) && (280 <= my && my <= 280+200)) {
+                         //정답
+                        apple13.style.visibility="visible";
+                        count++;
+                        q11();
+                         
+                    }//if
+
+                    if((425 <= mx && mx <= 425+250) && (280 <= my && my <=280+200)) {
+                       //틀린답
+                        c10.style.visibility="visible";
+                        inter = setInterval(viewapple, 10);
+                        fail++;
+                        if(fail==5){
+                           die();
+                        }
+                        else{
+                         q11();
+                        }
+                    }//if
+                }
+            
+            function q11answer(e) {
+                y=120;
+                q=11;
+                mx = e.offsetX;
+                my = e.offsetY;
+
+                    if((20 <= mx && mx <= 20+250) && (260 <= my && my <= 260+200)) {
+                         //정답
+                        apple14.style.visibility="visible";
+                        count++;
+                        q12();
+                    }//if
+
+                    if((272 <= mx && mx <= 272+250) && (260 <= my && my <=260+200)) {
+                       //틀린답
+                        c11.style.visibility="visible";
+                        inter = setInterval(viewapple, 10);
+                        fail++;
+                        if(fail==5){
+                           die();
+                        }
+                        else{
+                           q12();
+                        } 
+                    }//if
+
+                    if((530 <= mx && mx <= 530+250) && (260 <= my && my <= 260+200)) {
+                        //틀린답
+                        c11.style.visibility="visible";
+                        inter = setInterval(viewapple, 10);
+                       fail++;
+                        if(fail==5){
+                           die();
+                        }
+                        else{
+                           q12();
+                        } 
+                    }//if
+            }
+            
+            function q12answer(e) {
+                y=145;
+                q=12;
+                mx = e.offsetX;
+                my = e.offsetY;
+
+                    if((20 <= mx && mx <= 20+250) && (260 <= my && my <= 260+200)) {
+                        c12.style.visibility="visible";
+                        inter = setInterval(viewapple, 10);
+                        fail++;
+                        if(fail==5){
+                           die();
+                        }
+                        else{
+                           q13();
+                        } 
+                    }//if
+
+                    if((272 <= mx && mx <= 272+250) && (260 <= my && my <=260+200)) {
+                       //틀린답
+                       c12.style.visibility="visible";
+                       inter = setInterval(viewapple, 10);
+                       fail++;
+                        if(fail==5){
+                           die();
+                        }
+                        else{
+                           q13();
+                        } 
+                    }//if
+
+                    if((530 <= mx && mx <= 530+250) && (260 <= my && my <= 260+200)) {
+                        //정답
+                        apple15.style.visibility="visible";
+                        count++;
+                        q13();
+                    }//if
+            }
+
+            function q13answer(e) {
+                y=420;
+                q=13;
+                mx = e.offsetX;
+                my = e.offsetY;
+
+                    if((20 <= mx && mx <= 20+250) && (260 <= my && my <= 260+200)) {
+                        //정답
+                        apple16.style.visibility="visible";
+                        count++;
+                        q14();
+                    }//if
+
+                    if((272 <= mx && mx <= 272+250) && (260 <= my && my <=260+200)) {
+                       //틀린답
+                       c13.style.visibility="visible";
+                        inter = setInterval(viewapple, 10);
+                       fail++;
+                        if(fail==5){
+                           die();
+                        }
+                        else{
+                           q14();
+                        } 
+                        
+                    }//if
+
+                    if((530 <= mx && mx <= 530+250) && (260 <= my && my <= 260+200)) {
+                        c13.style.visibility="visible";
+                        inter = setInterval(viewapple, 10);
+                       fail++;
+                        if(fail==5){
+                           die();
+                        }
+                        else{
+                           q14();
+                        } 
+                    }//if
+            }
+
+            function q14answer(e) {
+                y=290;
+                q=14;
+                mx = e.offsetX;
+                my = e.offsetY;
+
+                    if((20 <= mx && mx <= 20+250) && (260 <= my && my <= 260+200)) {
+                        c14.style.visibility="visible";
+                        inter = setInterval(viewapple, 10);
+                        fail++;
+                        if(fail==5){
+                           die();
+                        }
+                        else{
+                           q15();
+                        } 
+                    }//if
+
+                    if((272 <= mx && mx <= 272+250) && (260 <= my && my <=260+200)) {
+                       //정답
+                       apple17.style.visibility="visible";
+                        count++;
+                        q15();
+                    }//if
+
+                    if((530 <= mx && mx <= 530+250) && (260 <= my && my <= 260+200)) {
+                        c14.style.visibility="visible";
+                        inter = setInterval(viewapple, 10);
+                        fail++;
+                        if(fail==5){
+                           die();
+                        }
+                        else{
+                           q15();
+                        } 
+                    }//if
+            }
+
+            function q15answer(e) {
+                y=211;
+                q=15;
+                mx = e.offsetX;
+                my = e.offsetY;
+
+                    if((20 <= mx && mx <= 20+250) && (260 <= my && my <= 260+200)) {
+                        c15.style.visibility="visible";
+                        inter = setInterval(viewapple, 10);
+                        fail++;
+                        if(fail==5){
+                           die();
+                        }
+                        else{
+                           q16();
+                        } 
+                    }//if
+
+                    if((272 <= mx && mx <= 272+250) && (260 <= my && my <=260+200)) {
+                       //정답
+                        apple18.style.visibility="visible";
+                        count++;
+                        q16();
+                        
+                    }//if
+
+                    if((530 <= mx && mx <= 530+250) && (260 <= my && my <= 260+200)) {
+                        c15.style.visibility="visible";
+                        inter = setInterval(viewapple, 10);
+                        fail++;
+                        if(fail==5){
+                           die();
+                        }
+                        else{
+                           q16();
+                        } 
+                    }//if
+            }
+
+            function q16answer(e) {
+                y=108;
+                q=16;
+                
+                mx = e.offsetX;
+                my = e.offsetY;
+
+                    
+                    if((120 <= mx && mx <= 120+250) && (280 <= my && my <= 280+200)) {
+                         //정답
+                        apple19.style.visibility="visible";
+                        count++;
+                        q17();
+                         
+                    }//if
+
+                    if((425 <= mx && mx <= 425+250) && (280 <= my && my <=280+200)) {
+                        c16.style.visibility="visible";
+                        inter = setInterval(viewapple, 10);
+                        fail++;
+                        if(fail==5){
+                           die();
+                        }
+                        else{
+                           q17();
+                        } 
+                    }//if
+                    
+            }
+
+            function q17answer(e) {
+                y=348;
+                q=17;
+                mx = e.offsetX;
+                my = e.offsetY;
+                       
+                   if((120 <= mx && mx <= 120+250) && (280 <= my && my <= 280+200)) {
+                       //틀린답
+                        c17.style.visibility="visible";
+                        inter = setInterval(viewapple, 10);
+                        fail++;
+                        if(fail==5){
+                           die();
+                        }
+                        //문제끝
+                        if(count >= 10){
+                            var finish = new Image();
+                            finish.addEventListener('load',function(){
+                            ctx.drawImage(finish,0,0,800,600);
+                            },false);
+                            finish.src="succesfullback.jpg";
+                        }
+                        
+                    }//if
+
+                    if((425 <= mx && mx <= 425+250) && (280 <= my && my <=280+200)) {
+                       //정답
+                        apple20.style.visibility="visible";
+                        count++;
+                        //문제끝
+                        if(count >= 10){
+                            ctx.clearRect(0,0,800,600);
+                            var finish = new Image();
+                            finish.addEventListener('load',function(){
+                            ctx.drawImage(finish,0,0,800,600);
+                            },false);
+                            finish.src="succesfullbackpng.jpg";
+                        }
+                    }//if
+            }
+            
+
+            function makeNewItem(e) { 
+                mx = e.offsetX;
+                my = e.offsetY;
+
+                if((653 <= mx && mx <= 653+100) && (15 <= my && my <= 15+100)) {
+                    //게임 시작으로 넘어가기
+                    ctx.clearRect(0, 0, 800, 600);
+                    q1();
+                }//if
+
+                if((30 <= mx && mx <= 30+100) && (15 <= my && my <= 15+100)) {
+                    //게임방법 설명으로넘어가기 
+                    ctx.clearRect(0, 0, 800, 600);
+
+                    var backpic1 = new Image();
+                    backpic1.addEventListener('load',function(){
+                    ctx.drawImage(backpic1,55,10,700,500);
+                    },false);
+                    backpic1.src="rule.jpg";
+
+                    var btn3 = new Image();
+                    btn3.src = "btn03.png";
+                    btn3.addEventListener('load',function(){
+                        ctx.drawImage(btn3,350,515,90,80);
+                    },false);
+                    
+                    canvas.addEventListener("click", makeNewItem, false);
+                 }//if
+                 
+                 if((350 <= mx && mx <= 350+90) && (515 <= my && my <= 515+80)) {
+                    //첫 화면으로 돌아가기
+                    ctx.clearRect(0, 0, 800, 600);
+                    game();
+                }//if
+            }//makeNewItem
+            
+            //배경음악을 키고 끄고 할 수 있도록
+            function musicstart() {
+                audio.addEventListener('ended',function(){this.currentTime=0;this.play();},false);
+                audio.play();
+            }
+            function musicstop() {
+                audio.pause();
+            }
+    </script>
+       
+            <canvas id = "canvas" width = "800" height="600" style="border : 5px solid black; position: absolute;">
+            </canvas>
+            <img src="tree.png" style="width: 15cm; height: 19.8cm; float: right;">  
+
+            <img src="grass.jpg" style = 'position: absolute; top: 680px; left: 1000px'>
+            <img src="grass.jpg" style = 'position: absolute; top: 680px; left: 1400px'>
+            <img src="grass.jpg" style = 'position: absolute; top: 680px; left: 200px'>
+            <img src="grass.jpg" style = 'position: absolute; top: 680px; left: 800px'>
+            <img src="grass.jpg" style = 'position: absolute; top: 680px; left: 50px'>
+            <img src="grass.jpg" style = 'position: absolute; top: 680px; left: 580px'>
+
+            <img src="apple.png" id = "apple1" style = 'position: absolute; top: 130px; left: 1000px; width: 90px; height: 90px; z-index: 999'>
+            <img src="apple.png" id = "apple2" style = 'position: absolute; top: 30px;  left: 1200px; width: 90px; height: 90px; z-index: 999'>
+            <img src="apple.png" id = "apple3" style = 'position: absolute; top: 50px;  left: 1080px; width: 90px; height: 90px; z-index: 999'>
+           
+            <img src="Caterpillars.png" id = "c1" style = 'visibility:hidden; position: absolute; top: 130px; left: 1000px; width: 90px; height: 90px; z-index: 999'>
+            <img src="Caterpillars.png" id = "c2" style = 'visibility:hidden; position: absolute; top: 30px;  left: 1200px; width: 90px; height: 90px; z-index: 999'>
+            <img src="Caterpillars.png" id = "c3" style = 'visibility:hidden; position: absolute; top: 50px;  left: 1080px; width: 90px; height: 90px; z-index: 999'>
+            
+            <img src="apple.png" id = "apple4" style =  'visibility:hidden; position: absolute; top: 40px;  left: 1300px; width: 90px; height: 90px; z-index: 999'>
+            <img src="apple.png" id = "apple5" style =  'visibility:hidden; position: absolute; top: 200px; left: 1091px; width: 90px; height: 90px; z-index: 999'>
+            <img src="apple.png" id = "apple6" style =  'visibility:hidden; position: absolute; top: 345px; left: 1410px; width: 90px; height: 90px; z-index: 999'>
+            <img src="apple.png" id = "apple7" style =  'visibility:hidden; position: absolute; top: 210px; left: 1350px; width: 90px; height: 90px; z-index: 999'>
+            <img src="apple.png" id = "apple8" style =  'visibility:hidden; position: absolute; top: 195px; left: 1200px; width: 90px; height: 90px; z-index: 999'>
+            <img src="apple.png" id = "apple9" style =  'visibility:hidden; position: absolute; top: 288px; left: 1010px; width: 90px; height: 90px; z-index: 999'>
+            <img src="apple.png" id = "apple10" style = 'visibility:hidden; position: absolute; top: 30px; left: 1200px; width: 90px; height: 90px; z-index: 999'>
+            <img src="apple.png" id = "apple11" style = 'visibility:hidden; position: absolute; top: 120px; left: 1380px; width: 90px; height: 90px; z-index: 999'>
+            <img src="apple.png" id = "apple12" style = 'visibility:hidden; position: absolute; top: 145px; left: 1275px; width: 90px; height: 90px; z-index: 999'>
+            <img src="apple.png" id = "apple13" style = 'visibility:hidden; position: absolute; top: 420px; left: 1368px; width: 90px; height: 90px; z-index: 999'>
+            <img src="apple.png" id = "apple14" style = 'visibility:hidden; position: absolute; top: 290px; left: 1350px; width: 90px; height: 90px; z-index: 999'>
+            <img src="apple.png" id = "apple15" style = 'visibility:hidden; position: absolute; top: 211px; left: 960px; width: 90px; height: 90px; z-index: 999'>
+            <img src="apple.png" id = "apple16" style = 'visibility:hidden; position: absolute; top: 108px; left: 1150px; width: 90px; height: 90px; z-index: 999'>
+            <img src="apple.png" id = "apple17" style = 'visibility:hidden; position: absolute; top: 348px; left: 960px; width: 90px; height: 90px; z-index: 999'>
+            <img src="apple.png" id = "apple18" style = 'visibility:hidden; position: absolute; top: 420px; left: 1050px; width: 90px; height: 90px; z-index: 999'>
+            <img src="apple.png" id = "apple19" style = 'visibility:hidden; position: absolute; top: 510px; left: 1080px; width: 90px; height: 90px; z-index: 999'>
+            <img src="apple.png" id = "apple20" style = 'visibility:hidden; position: absolute; top: 280px; left: 1200px; width: 90px; height: 90px; z-index: 999'>
+            
+
+            <img src="Caterpillars.png" id = "c4" style =  'visibility:hidden; position: absolute; top: 40px;  left: 1300px; width: 90px; height: 90px; z-index: 999'>
+            <img src="Caterpillars.png" id = "c5" style =  'visibility:hidden; position: absolute; top: 200px; left: 1091px; width: 90px; height: 90px; z-index: 999'>
+            <img src="Caterpillars.png" id = "c6" style =  'visibility:hidden; position: absolute; top: 345px; left: 1410px; width: 90px; height: 90px; z-index: 999'>
+            <img src="Caterpillars.png" id = "c7" style =  'visibility:hidden; position: absolute; top: 210px; left: 1350px; width: 90px; height: 90px; z-index: 999'>
+            <img src="Caterpillars.png" id = "c8" style =  'visibility:hidden; position: absolute; top: 195px; left: 1200px; width: 90px; height: 90px; z-index: 999'>
+            <img src="Caterpillars.png" id = "c9" style =  'visibility:hidden; position: absolute; top: 288px; left: 1010px; width: 90px; height: 90px; z-index: 999'>
+            <img src="Caterpillars.png" id = "c10" style = 'visibility:hidden; position: absolute; top: 30px; left: 1200px; width: 90px; height: 90px; z-index: 999'>
+            <img src="Caterpillars.png" id = "c11" style = 'visibility:hidden; position: absolute; top: 120px; left: 1380px; width: 90px; height: 90px; z-index: 999'>
+            <img src="Caterpillars.png" id = "c12" style = 'visibility:hidden; position: absolute; top: 145px; left: 1275px; width: 90px; height: 90px; z-index: 999'>
+            <img src="Caterpillars.png" id = "c13" style = 'visibility:hidden; position: absolute; top: 420px; left: 1368px; width: 90px; height: 90px; z-index: 999'>
+            <img src="Caterpillars.png" id = "c14" style = 'visibility:hidden; position: absolute; top: 290px; left: 1350px; width: 90px; height: 90px; z-index: 999'>
+            <img src="Caterpillars.png" id = "c15" style = 'visibility:hidden; position: absolute; top: 211px; left: 960px; width: 90px; height: 90px; z-index: 999'>
+            <img src="Caterpillars.png" id = "c16" style = 'visibility:hidden; position: absolute; top: 108px; left: 1150px; width: 90px; height: 90px; z-index: 999'>
+            <img src="Caterpillars.png" id = "c17" style = 'visibility:hidden; position: absolute; top: 348px; left: 960px; width: 90px; height: 90px; z-index: 999'>
+            <img src="Caterpillars.png" id = "c18" style = 'visibility:hidden; position: absolute; top: 420px; left: 1050px; width: 90px; height: 90px; z-index: 999'>
+            <img src="Caterpillars.png" id = "c19" style = 'visibility:hidden; position: absolute; top: 510px; left: 1080px; width: 90px; height: 90px; z-index: 999'>
+            <img src="Caterpillars.png" id = "c20" style = 'visibility:hidden; position: absolute; top: 510px; left: 1290px; width: 90px; height: 90px; z-index: 999'>
+            
+            <input type="button" style="position: absolute; background: url('start.png'); width: 84px; height: 78px; top: 670px; left:350px;" 
+            id="start" onclick="musicstart()">
+            <input type="button" style="position: absolute; background: url('stop.png'); width: 84px; height: 78px; top: 670px; left: 450px;" 
+            id="stop" onclick="musicstop()">
+        </body>
+</html>

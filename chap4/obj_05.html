@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+</head>
+<body>
+   <script>
+       var product = {
+            제품명:'건조망고',
+            유형:'당절임',
+            성분:'설탕, 망고'
+       };
+       var person = {
+            name:'나미림',
+            eat:function(food){
+                alert(this.name + '이' + food + '를 먹습니다.');
+            }
+       };
+       person.eat('pizza');
+       var output ='';
+       for(var key in product){
+           output += '*' + key + ':' + product[key] + '\n';
+       }
+       alert(output);
+       
+        </script>
+    </body>
+</html>

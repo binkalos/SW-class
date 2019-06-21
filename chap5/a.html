@@ -1,0 +1,32 @@
+<!Doctype html>
+<html>
+    <head>
+        <meta charset = "utf-8">
+        <title>2112</title>
+        <script>
+            window.onload = init;
+            function init() {
+                document.getElementById("myForm").onsubmit = gotoUrl;
+            }
+            function gotoUrl(){
+                var url = document.getElementById("url").value;
+                if(url.slice("http://") in url){
+                    window.open(url);
+                }
+                else{
+                    url ="http://" +url;
+                    window.open(url);
+                }
+
+            }
+           // setInterval(function(){},1000)//1초에 한번씩 function내용 반복
+        </script>
+        </head>
+        <body>
+            <form id = "myForm">
+            <label>Go to</label>
+            <input type = "text" id = "url" placeholder="사이트 주소입력">
+            <input type = "submit" value="이동">
+            </form>
+        </body>
+</html>

@@ -1,0 +1,19 @@
+<!doctype html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <script>
+            function willchange(y){
+                document.write("함수내부의 전달 직후 y:" + y.num +"<br>");//1
+                y.num= 2;
+                document.write("함수내부의 변화후 y:" + y.num +"<br>");//2
+            }
+          var y = {num:1}//object(객체)
+          document.write("원 데이터 y:"+y.num+"<br>");//1
+          willchange(y);//참조:가리키는 주소값(reference)
+          document.write("함수호출 이후 y:" + y.num +"<br>");//2
+        </script>
+    
+    </body>
+</html>

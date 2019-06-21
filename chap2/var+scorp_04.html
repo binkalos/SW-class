@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>연습</title>
+        <style></style>
+        <script>
+        age = 20;//전역변수
+        function test(){//명시적 함수 선언
+           var grade = 2;//지역 변수
+           return grade;
+        }
+        test();//함수 호출
+        document.write("나이  : " + age);
+        document.write("학년  : " + grade);//grade is nit defined
+        </script>
+        </head>
+    <body>
+    </body>
+    </html>

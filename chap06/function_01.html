@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+    a();//호출부터 함 (맨 위에 있어도 아래서 실행ㅈ됨)
+    function a(){//전역객체 위에 일등으로 올라가있음
+        alert("함수 a");
+    }
+    var a = function(){//위의 함수 1을 덮어쓴다. 
+        alert("함수 b");
+    }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

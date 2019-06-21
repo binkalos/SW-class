@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html>
+ <head>
+   <title>trycatch연습</title>
+   <style>
+   body{background-color : pink;
+   width : 80%; font: size 1.5m;
+   }
+   </style>
+   <script>
+    var message;
+    function test(){//함수 선언
+      try{
+      alert("HELLO");
+    }//try
+    catch(error){
+     // message = "다음과 같은 오류 발생" + error.message;
+       message =  error.toString();
+       alert(message);
+      }//catch
+   }//test
+  </script>
+</head>
+<body>
+  <input type="button" value ="trycatch" onclick="test()">
+  <!--버튼을 누르면 test()함수 실행><!-->
+  </body>
+   
+
+
+</html>

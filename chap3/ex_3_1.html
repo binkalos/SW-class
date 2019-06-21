@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style></style>
+<script>
+    //날짜 생성 => 시간을 가져오기
+    var data = new Data();//생성자 함수
+    
+    var hour = data.getHours();
+
+    if(hour >= 12){
+        document.write("오후임");
+
+    }
+    
+    if(hour < 12){
+        document.write("오전임");
+    }
+</script>
+</head>
+<body>
+    시간을 입력받아 오전, 오후 구분하는 프로그램
+</body>
+</html>

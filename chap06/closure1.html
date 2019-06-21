@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+function test(name){
+var output = 'Hello' + name + '..!';
+//return output;//return해주면 메모리에 살아있게 됨 이것을 클로저라고 함
+return function(){
+    alert(output);
+}
+}
+var test_1 = test('web');
+var test_2 = test('javascript');
+alert(test_1);
+alert(test_2);
+ 
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

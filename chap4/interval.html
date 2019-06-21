@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "utf-8">
+        <tittle></tittle>
+        <link rel = "stylesheet" href="form.css">
+        <script>
+         //전역변수
+        var today;
+        var thatDay;
+        var interval;
+        var one_day = 24*60*60*1000; //유닉스 시간의 하루 계산법
+        var message;//결과 출력위해
+
+        today = new Date();
+        thatDay = new Date(2018,11,25);//2018년 12월 25일인데 달을 0부터 세서 11로 표시
+
+        if(today<thatDay){
+            interval = Math.floor(thatDay.getTime()-today.getTime())/one_day;
+            //math.floor는 몇일 남았는지 올림할려고
+            message = "크리스마스까지 남은 날짜 : " + interval + "일"; 
+        }//크리스마스 안지난 경우
+        else{
+            interval = Math.floor(today.getTime()-thatDay.getTime())/one_day;
+            message = "크리스마스가 지난지 : " + interval + "일"; 
+        }//크리스마스 지난 경우
+    
+        alert(message);
+
+        </script>
+    </head>
+</html>

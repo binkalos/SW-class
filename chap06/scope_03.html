@@ -1,0 +1,19 @@
+<!doctype html>
+    <head>
+        <meta charset="UTF-8">
+  
+    
+        <script>
+         function functionTest(a){//파라미터는 지역변수
+             document.write(a);//지역변수
+         }
+         functionTest(5);//함수종료후 메모리에서 사라진다.
+         document.write(a);//결과값 : 없는 a를 출력하라고 하는것이라 오류난다 (a is not defined)
+         //undifined => 메모리 할당 ok => 실제 값 binding not yet
+        </script>
+      </head>
+      <body>
+          <h1>변수 scope chain을 이해합니다.</h1> <!--1번-->
+    </body>
+
+</html>

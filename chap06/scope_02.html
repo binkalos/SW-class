@@ -1,0 +1,22 @@
+<!doctype html>
+    <head>
+        <meta charset="UTF-8">
+  
+    
+        <script>
+         var num =5;//3번
+         add(2,4);//호출먼저 //4번
+         function add(){//정의 나중에 하고 //2번
+             if(typeof x=="number" && typeof y =="number"){
+                alert("x+y");//5번
+             }
+         }
+         document.write(num);//6번
+         //8번줄 먼저 실행하고 그다음 7번줄 하기때문에 함수 호출 먼저해도 상관없음
+        </script>
+      </head>
+      <body>
+          <h1>변수 scope chain을 이해합니다.</h1> <!--1번-->
+    </body>
+
+</html>

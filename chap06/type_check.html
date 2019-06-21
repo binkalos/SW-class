@@ -1,0 +1,22 @@
+<!doctype html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <script>
+           //함수 매개변수의 타입 검사를 하지 않는다.
+           function add(x,y){
+               //타입을 체크해야 하는 경우
+               //alert(typeof(x));
+               if(typeof x==Number&&typeof y==Number){
+                alert(x+y);
+               }
+           }
+           add(2,2);
+           //이 아래 두개는 나오지 않음 위의 타입체크 하는곳에서 숫자일때만 더하기 가능하게 함
+           add("2","2");//이렇게 하면 22가 나옴 4나오는거 아님
+           add("Hello","world");//매개변수의 타입 검사를 안하기 때문에 문자열 덧셈도 가능
+        </script>
+    
+    </body>
+</html>

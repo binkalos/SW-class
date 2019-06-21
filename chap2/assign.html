@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>연습</title>
+    <style>
+        body {width:80%; font-size:1.2em; color:blue; margin:auto;}
+        p{margin-left:100px;}
+    </style>
+    <script>
+        //이벤트 발생(익명함수 => 이름이 없는 함수 : 전통적인 방법)
+        window.onload = function(){
+            var list = "";//지역변수(괄호 나가면 사용 못함)
+            list += "<ul>";
+            list += "<li> HELLO </li>";//순서 없는 목록 li
+            list += "<li> JAVASCRIPT </li>"
+            list += "</ul>";
+            document.body.innerHTML = list;//innerhtml은 태그로 변신시켜서 html에서 일하게 해라 
+        }
+     </script>
+     </head>
+     <body><p>복합대입연산자와 innerHTML연습입니다.</p></body>
+</html>
